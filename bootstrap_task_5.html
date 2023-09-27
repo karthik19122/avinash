@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task-5</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .form-section {
+            border: 1px solid lightgrey;
+            padding: 20px;
+            margin: 10px;
+        }
+        .required {
+            color: red;
+        }
+        .error {
+            border-color: red;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+        .input-group {
+            position: relative;
+        }
+        .input-group-append {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .input-group-append i {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Example Form</h1>
+        <form id="example-form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-section">
+                        <h3>Section 1</h3>
+                        <div class="form-group">
+                            <label for="first-name-1">First Name <span class="required">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="first-name-1" name="first-name-1" required>
+                                <div class="input-group-append">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name-1">Last Name <span class="required">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="last-name-1" name="last-name-1" required>
+                                <div class="input-group-append">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-1">Email Address <span class="required">*</span></label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="email-1" name="email-1" required>
+                                <div class="input-group-append">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-1">Phone Number <span class="required">*</span></label>
+                            <div class="input-group">
+                                <input type="tel" class="form-control" id="phone-1" name="phone-1" required>
+                                <div class="input-group-append">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                            </div>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address-1">Address <span class="required">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="address-1" name="address-1" required>
+                                <div class="input-group-append">
+                                    <i class="fas fa-map-marker"></i>
+                                </div>
+                            </div>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="state-1">State <span class="required">*</span></label>
+                            <div class="input-group">
+                                <select class="form-control" id="state-1" name="state-1" required>
+                                    <option value="">Select State</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <!-- Add more Indian states here -->
+                                </select>
+                                <div class="input-group-append">
+                                    <i class="fas fa-map"></i>
+                                </div>
+                            </div>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-description-1">Project Description <span class="required">*</span></label>
+                            <div class="input-group">
+                                <textarea class="form-control" id="project-description-1" name="project-description-1" required></textarea>
+                                <div class="input-group-append">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                            </div>
+                            <div class="error-message"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+    <!-- Custom JavaScript -->
+    <script>
+        document.getElementById("example-form").addEventListener("submit", function(event) {
+            var isValid = true;
+            var requiredFields = this.querySelectorAll("[required]");
+            requiredFields.forEach(function(field) {
+                if (!field.value) {
+                    field.classList.add("error");
+                    field.nextElementSibling.textContent = "This field is required";
+                    isValid = false;
+                } else {
+                    field.classList.remove("error");
+                    field.nextElementSibling.textContent = "";
+                }
+            });
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

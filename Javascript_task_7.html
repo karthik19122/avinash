@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Animation</title>
+    <style>
+        /* Add some basic styling for the train image and buttons */
+        #train {
+            width: 200px; /* Adjust the width as needed */
+            position: relative;
+            left: 0;
+            transition: left 2s linear; /* Animation duration and timing function */
+        }
+        #buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img id="train" src="train.gif" alt="Train Image">
+    <p><h2>Click the following buttons to handle animation</h2></p>
+    <div id="buttons">
+        <button onclick="startAnimation()">Start</button>
+        <button onclick="stopAnimation()">Stop</button>
+    </div>
+
+    <script>
+        let animationInterval;
+
+        function startAnimation() {
+            // Start the animation by changing the left position of the train
+            const train = document.getElementById("train");
+            let currentPosition = 0;
+            const animationSpeed = 5; // Adjust the speed as needed (lower values make it slower)
+
+            animationInterval = setInterval(() => {
+                currentPosition += animationSpeed;
+                train.style.left = currentPosition + "px";
+
+                // Check if the train has reached the end of the screen
+                if (currentPosition >= window.innerWidth) {
+                    clearInterval(animationInterval);
+                }
+            }, 16); // 60 frames per second
+        }
+
+        function stopAnimation() {
+            // Stop the animation by clearing the interval
+            clearInterval(animationInterval);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .form-section {
+            border: 1px solid lightgrey;
+            padding: 20px;
+            margin: 10px;
+        }
+        .required {
+            color: red;
+            display: none; /* Hide error messages initially */
+        }
+        .error {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Form</h1>
+        <form id="contact-form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-section">
+                        <h3>Contact Information</h3>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                            <div class="required">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                            <div class="required">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="text" class="form-control" id="website" name="website" required>
+                            <div class="required">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message Box</label>
+                            <textarea class="form-control" id="message" name="message" required></textarea>
+                            <div class="required">This field is required</div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" onclick="validateForm()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Custom JavaScript -->
+    <script>
+        function validateForm() {
+            // Remove previous error styles
+            var errorFields = document.querySelectorAll('.form-group');
+            errorFields.forEach(function (field) {
+                field.classList.remove('error');
+            });
+
+            // Get the form element by id
+            var form = document.getElementById("contact-form");
+
+            // Check if the form is valid
+            var isValid = true;
+
+            // Validate required fields
+            var requiredFields = form.querySelectorAll('.form-control[required]');
+            requiredFields.forEach(function (field) {
+                if (!field.value) {
+                    field.parentElement.classList.add('error');
+                    field.nextElementSibling.style.display = 'block'; // Set display to 'block'
+                    isValid = false;
+                } else {
+                    field.nextElementSibling.style.display = 'none';
+                }
+            });
+
+            if (isValid) {
+                // If valid, submit the form or perform further actions
+                alert("Form submitted successfully!");
+                // You can add code here to submit the form to a server or perform other actions
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+
+    <form>
+        <label for="firstNumber">1st number:</label>
+        <input type="number" id="firstNumber" required>
+        <br>
+        
+        <label for="secondNumber">2nd number:</label>
+        <input type="number" id="secondNumber" required>
+        <br>
+
+        <input type="button" value="Multiply" onclick="calculate('multiply')">
+        <input type="button" value="Divide" onclick="calculate('divide')">
+        <br>
+
+        <p>The result is: <span id="result"></span></p>
+    </form>
+
+    <script>
+        function calculate(operation) {
+            var firstNumber = parseFloat(document.getElementById("firstNumber").value);
+            var secondNumber = parseFloat(document.getElementById("secondNumber").value);
+            var result = document.getElementById("result");
+
+            if (isNaN(firstNumber) || isNaN(secondNumber)) {
+                result.textContent = "Please enter valid numbers.";
+                return;
+            }
+
+            switch (operation) {
+                case 'multiply':
+                    result.textContent =  + (firstNumber * secondNumber);
+                    break;
+                case 'divide':
+                    if (secondNumber === 0) {
+                        result.textContent = "Cannot divide by zero.";
+                    } else {
+                        result.textContent =  (firstNumber / secondNumber);
+                    }
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

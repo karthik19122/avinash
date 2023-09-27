@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        /* Your existing styles here... */
+        
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background-color: lightpink; /* Light pink background color */
+        }
+
+        .form-field {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-field label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .form-field input[type="text"],
+        .form-field input[type="email"],
+        .form-field input[type="password"],
+        .form-field input[type="number"],
+        .form-field input[type="tel"],
+        .form-field textarea,
+        .form-field select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-field input[type="checkbox"],
+        .form-field input[type="radio"] {
+            margin-right: 5px;
+        }
+        button[type="submit"] {
+            background-color: red;
+            color: white; /* Text color */
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Hover effect for the button */
+        button[type="submit"]:hover {
+            background-color: darkred; /* Darker red on hover */
+        }
+
+        .rating {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Registration Form</h1>
+        <div class="form-container">
+            <form onsubmit="return validateForm()">
+                <div class="form-field">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name">
+                    <span class="rating" id="first-name-rating">Poor</span>
+                </div>
+
+                <div class="form-field">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name">
+                    <span class="rating" id="last-name-rating">Poor</span>
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <span class="rating" id="email-rating">Poor</span>
+                </div>
+
+                <div class="form-field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <span class="rating" id="password-rating">Poor</span>
+                </div>
+
+                <!-- Add more fields as needed... -->
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </center>
+    
+    <script>
+        function validateForm() {
+            var isValid = true;
+
+            // Example validation for the first name field
+            var firstName = document.getElementById("first-name");
+            var firstNameRating = document.getElementById("first-name-rating");
+
+            if (firstName.value.trim() === "") {
+                isValid = false;
+                firstNameRating.style.color = "red";
+            } else {
+                firstNameRating.style.color = "green";
+            }
+
+            // Add similar validation for other fields...
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
